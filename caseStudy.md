@@ -164,20 +164,20 @@ The precise ratios are as follows:
 Based on the tabular data of the Income Groups vs. Quantile rankings, as well as the histogram, we can see that, eventhough, the low middle income seems to have the highest percentage of total GDP population, High income:  OECD income group makes up 47% of the top quantile group, consisting of 38 GDP values and it contains no low incomes.  This is represented by Quantile 5, which in this case consists of the top 38 GDPs.  The lowest quantile group, consisting of 37 GDP values, is composed of 43% of Lower middle incomes.   
 
   * Answers
-    1. Merge the data based on the country shortcode. How many of the IDs match?
+    1. <B>Merge the data based on the country shortcode. How many of the IDs match?</B>
       By merging the gdp data with the educational data on country shortcode, the results show 189 country shortcodes that have maching IDs.
     
-    2. Sort the data frame in ascending order by GDP (so United States is last). What is the 13th
-    country in the resulting data frame?
+    2. <B>Sort the data frame in ascending order by GDP (so United States is last). What is the 13th
+    country in the resulting data frame?</B>
       When the data is sorted in ascending order by GDP, the results show "St. Kitts and Nevis" is the 13th country.  Hence, it has the 13th lowest GDP.  This is represented in the code as sorting by the 34th column, which is the GDP.
     
-    3. What are the average GDP rankings for the "High income: OECD" and "High income:
-    nonOECD" groups?
+    3. <B>What are the average GDP rankings for the "High income: OECD" and "High income:
+    nonOECD" groups?</B>
       The average of High income: OECD is 32.97.  The average of High income: nonOECD is 91.91.  Hence, High income:nonOECD has a higher average GDP ranking than the High income: OECD.  
       
-    4. Cut the GDP ranking into 5 separate quantile groups. Make a table versus Income.Group.
+    4. <B>Cut the GDP ranking into 5 separate quantile groups. Make a table versus Income.Group.
       How many countries are Lower middle income but among the 38 nations with highest
-      GDP?
+      GDP?</B>
         After separating the quantile groups and making a table of the quantile groups vs. income groups, there are 5 countries that are lower middle income but among the 38 nations with highest gdp.  In our data, quantile 5 has the highest ranked gdp rankings, consisting of 38 observations and quantile 1 has the lowest ranked gdp rankings, consisting of 37 observations.
         
 
