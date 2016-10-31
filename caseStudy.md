@@ -1,16 +1,18 @@
----
-title: "caseStudy1"
-author: "Vishi Cline"
-date: "October 26, 2016"
-output: 
-  html_document: 
-    keep_md: true 
+# caseStudy1
+Vishi Cline  
+October 26, 2016  
 
----
 
-```{r setup, include=TRUE}
+```r
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
+```
+
+```
+## Warning: package 'knitr' was built under R version 3.2.5
+```
+
+```r
 opts_knit$set(root_dir = ".//Homework//R//caseStudy1//")
 ```
 
@@ -61,7 +63,8 @@ Below is the code for downloading the data for the Gross Domestic Product to the
 
 
 #Load the necessary packages
-```{r, echo=TRUE, results='hide', message=FALSE}
+
+```r
 # install.packages("downloader")
 # install.packages("gdata")
 # install.packages("ggplot2")
@@ -69,19 +72,28 @@ Below is the code for downloading the data for the Gross Domestic Product to the
 source("init.R")
 ```
 
-# Gather the data
-The below makefile code will download the data from URL into a file.  The gross domestic product data will be downloaded to gdp.csv and the educational data will be downloaded to educ.csv.
-```{r GatherData, echo=FALSE, eval=FALSE}
-#######################################GATHER DATA#############################################
-#Download and load the gross domestic product data by country into gdp.csv
-download("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv", destfile="gdp.csv")
-
-#Download and load the educational data by country into educ.csv
-download("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv", destfile="educ.csv")
-##############################################################################################
+```
+## Warning: package 'gdata' was built under R version 3.2.5
 ```
 
-```{r, echo=TRUE}
+```
+## Warning: package 'plyr' was built under R version 3.2.5
+```
+
+```
+## Warning: package 'downloader' was built under R version 3.2.5
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 3.2.5
+```
+
+# Gather the data
+The below makefile code will download the data from URL into a file.  The gross domestic product data will be downloaded to gdp.csv and the educational data will be downloaded to educ.csv.
+
+
+
+```r
 ##Make File Code
 source("Gather1.R")
 source("Gather2.R")
@@ -92,14 +104,97 @@ source("Gather2.R")
 Tidy1.R tidies the data for gross product domestic file.  It firsts reads the data from the csv file, gdp.csv, into the gdp data frame.  After that, in order to preserve the original data, this data is backed up into gdpraw data frame.  Gdp data frame will be scrubbed and prepared for analysis.  It names the columns to a meaningful values, deletes the empty columns, converts the data-types appropriately as needed, and removes the NA/blank values from the dataframe.  Since we are analyzing data for countries, there are certain columns that don't pertain to countries and are rather for the world or regions.  There are also some columns for income.  These columns are removed and placed in another dataframe for potential separate analysis.  Also, there is a special notes column which has abbreviations and the description for those abbreviations is explained at the bottom of the file.  The abbreviations in the Special Notes column in the dataframe was replaced by these descriptions, to make the data more readable for the user.
 
 Tidy2.R tidies the data for educational file.  It reads the data from the csv file, edu.csv, into the educ data frame.  In order to preserve the original data, this data is backed up into educraw data frame.  Educ data frame is scrubbed and prepared for analysis.  NA/blank values are removed from IncomeGroup column.  Income.Group is renamed to IncomeGroup and CountryCode is renamed to CountryShortCode.  Both of these colums are used for analysis and since CountryShortCode is the key matching column in both files, CountryCode was renamed for ease of matching and keeping the columns names consistent.
-```{r, echo=TRUE, results='hide'}
+
+```r
 #R code to tidy the data for the gross domestic product 
 source("Tidy1.R")
+```
+
+```
+## Warning: NAs introduced by coercion
+```
+
+```r
 #R code to tidy the data for educational data
 source("Tidy2.R")
 ```
 
-```{r Tidy1, echo=FALSE, eval=FALSE}
+
+
+
+
+
+#Analysis
+Analysis.R file is used to conduct analysis on the gross domestic product data in conjunction with the educational data.  The data from the gross domestic product is merged with the educational data by matching on CountryShortCode.  This data is then sorted by GDP in ascending order.  Please note that by doing so, we have effectively also sorted the GDP rankings in ascending order.  We then retrieve the average GDP rankings for the High income:OECD and High income:nonOECD income groups in order to observe the difference between the two in relation to each other.  Finally, the GDP for all the countries is plotted against the Income Group.  This is represented through the histogram below.  Furthermore, the GDP rankings are grouped into 5 separate quantiles, with Quantile1 representing the bottom 37 ranked GDPs and Quantile5 representing the top 38 ranked GDPs.  The reason for this uneven distribution is due to 189 observations.  The quantiles are presented in a tabular form against the Income Groups.
+
+```r
+source("Analysis.R")
+```
+
+![](caseStudy_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+```
+##         incomegroup
+## quantile High income: nonOECD High income: OECD Low income
+##        1                    1                 0         11
+##        2                    5                 1         16
+##        3                    8                 1          9
+##        4                    5                10          1
+##        5                    4                18          0
+##         incomegroup
+## quantile Lower middle income Upper middle income
+##        1                  16                   9
+##        2                   8                   8
+##        3                  12                   8
+##        4                  13                   9
+##        5                   5                  11
+```
+
+
+ 
+# Conclusion
+The precise ratios are as follows:
+ High income:  nonOECD makes up 12% of the total GDP population.
+ High income:  OECD makes up 16% of the total GDP population.
+ Low income makes up 19% of the total GDP population.
+ Low middle income makes up 28% of the total GDP population.
+ Upper middle income makes up 24% of the total GDP population.
+Based on the tabular data of the Income Groups vs. Quantile rankings, as well as the histogram, we can see that, eventhough, the low middle income seems to have the highest percentage of total GDP population, High income:  OECD income group makes up 47% of the top quantile group, consisting of 38 GDP values and it contains no low incomes.  This is represented by Quantile 5, which in this case consists of the top 38 GDPs.  The lowest quantile group, consisting of 37 GDP values, is composed of 43% of Lower middle incomes.   
+
+  * Answers
+    1. Merge the data based on the country shortcode. How many of the IDs match?
+      By merging the gdp data with the educational data on country shortcode, the results show 189 country shortcodes that have maching IDs.
+    
+    2. Sort the data frame in ascending order by GDP (so United States is last). What is the 13th
+    country in the resulting data frame?
+      When the data is sorted in ascending order by GDP, the results show "St. Kitts and Nevis" is the 13th country.  Hence, it has the 13th lowest GDP.  This is represented in the code as sorting by the 34th column, which is the GDP.
+    
+    3. What are the average GDP rankings for the "High income: OECD" and "High income:
+    nonOECD" groups?
+      The average of High income: OECD is 32.97.  The average of High income: nonOECD is 91.91.  Hence, High income:nonOECD has a higher average GDP ranking than the High income: OECD.  
+      
+    4. Cut the GDP ranking into 5 separate quantile groups. Make a table versus Income.Group.
+      How many countries are Lower middle income but among the 38 nations with highest
+      GDP?
+        After separating the quantile groups and making a table of the quantile groups vs. income groups, there are 5 countries that are lower middle income but among the 38 nations with highest gdp.  In our data, quantile 5 has the highest ranked gdp rankings, consisting of 38 observations and quantile 1 has the lowest ranked gdp rankings, consisting of 37 observations.
+        
+
+## Appendix
+Code for Downloading the data:
+
+```r
+#######################################GATHER DATA#############################################
+#Download and load the gross domestic product data by country into gdp.csv
+download("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv", destfile="gdp.csv")
+
+#Download and load the educational data by country into educ.csv
+download("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv", destfile="educ.csv")
+##############################################################################################
+```
+
+Code for tidying the data for gross domestic product:
+
+```r
 #######################################TIDY DATA FOR GDP#######################################
 #read the gdp.csv file into gdp dataframe
 gdp<-read.csv("gdp.csv", stringsAsFactors = FALSE, header=FALSE)
@@ -167,7 +262,9 @@ gdpdata$SpecialNotes<-sapply(gdpdata$SpecialNotes,switch,
 ##############################################################################################
 ```
 
-```{r Tidy2, echo=FALSE, eval=FALSE}
+Code for tidying the data for educational data:
+
+```r
 #######################################TIDY DATA FOR EDUC#######################################
 #read the educ.csv file into educ dataframe
 educ<-read.csv("educ.csv", stringsAsFactors = FALSE, header=TRUE)
@@ -199,14 +296,9 @@ educ<- educ[!is.na(educ$IncomeGroup),]
 ##############################################################################################
 ```
 
+Code for performing the analyis on the data:
 
-#Analysis
-Analysis.R file is used to conduct analysis on the gross domestic product data in conjunction with the educational data.  The data from the gross domestic product is merged with the educational data by matching on CountryShortCode.  This data is then sorted by GDP in ascending order.  Please note that by doing so, we have effectively also sorted the GDP rankings in ascending order.  We then retrieve the average GDP rankings for the High income:OECD and High income:nonOECD income groups in order to observe the difference between the two in relation to each other.  Finally, the GDP for all the countries is plotted against the Income Group.  This is represented through the histogram below.  Furthermore, the GDP rankings are grouped into 5 separate quantiles, with Quantile1 representing the bottom 37 ranked GDPs and Quantile5 representing the top 38 ranked GDPs.  The reason for this uneven distribution is due to 189 observations.  The quantiles are presented in a tabular form against the Income Groups.
-```{r, echo=TRUE}
-source("Analysis.R")
-```
-
-```{r Analysis, echo=FALSE, eval=FALSE}
+```r
 #######################################ANALYSIS#######################################
 #Merge the data based on the country shortcode.
 matchingIDs<-merge(educ,gdpdata,by="CountryShortCode", all=FALSE) 
@@ -258,47 +350,3 @@ for (i in 1:CountOfRows)
 print(table(quantile=df$quantile, incomegroup=factor(df$incomeGroup)))
 ##############################################################################################
 ```
- 
-# Conclusion
-The precise ratios are as follows:
- High income:  nonOECD makes up 12% of the total GDP population.
- High income:  OECD makes up 16% of the total GDP population.
- Low income makes up 19% of the total GDP population.
- Low middle income makes up 28% of the total GDP population.
- Upper middle income makes up 24% of the total GDP population.
-Based on the tabular data of the Income Groups vs. Quantile rankings, as well as the histogram, we can see that, eventhough, the low middle income seems to have the highest percentage of total GDP population, High income:  OECD income group makes up 47% of the top quantile group, consisting of 38 GDP values and it contains no low incomes.  This is represented by Quantile 5, which in this case consists of the top 38 GDPs.  The lowest quantile group, consisting of 37 GDP values, is composed of 43% of Lower middle incomes.   
-
-  * Answers
-    1. Merge the data based on the country shortcode. How many of the IDs match?
-      By merging the gdp data with the educational data on country shortcode, the results show 189 country shortcodes that have maching IDs.
-    
-    2. Sort the data frame in ascending order by GDP (so United States is last). What is the 13th
-    country in the resulting data frame?
-      When the data is sorted in ascending order by GDP, the results show "St. Kitts and Nevis" is the 13th country.  Hence, it has the 13th lowest GDP.  This is represented in the code as sorting by the 34th column, which is the GDP.
-    
-    3. What are the average GDP rankings for the "High income: OECD" and "High income:
-    nonOECD" groups?
-      The average of High income: OECD is 32.97.  The average of High income: nonOECD is 91.91.  Hence, High income:nonOECD has a higher average GDP ranking than the High income: OECD.  
-      
-    4. Cut the GDP ranking into 5 separate quantile groups. Make a table versus Income.Group.
-      How many countries are Lower middle income but among the 38 nations with highest
-      GDP?
-        After separating the quantile groups and making a table of the quantile groups vs. income groups, there are 5 countries that are lower middle income but among the 38 nations with highest gdp.  In our data, quantile 5 has the highest ranked gdp rankings, consisting of 38 observations and quantile 1 has the lowest ranked gdp rankings, consisting of 37 observations.
-        
-
-## Appendix
-Code for Downloading the data:
-```{r appendix, ref.label='GatherData', eval=FALSE}
-```     
-
-Code for tidying the data for gross domestic product:
-```{r appendix, ref.label='Tidy1', eval=FALSE}
-```  
-
-Code for tidying the data for educational data:
-```{r appendix, ref.label='Tidy2', eval=FALSE}
-``` 
-
-Code for performing the analyis on the data:
-```{r appendix, ref.label='Analysis', eval=FALSE}
-``` 
