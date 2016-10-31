@@ -5,4 +5,4 @@
 ###############################################################
 
 #Download and load the educational data by country into educ.csv
-download("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv", destfile="educ.csv")
+download("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv", destfile="RawData//educ.csv")

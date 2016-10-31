@@ -5,4 +5,4 @@
 ###############################################################
 
 #Download and load the gross domestic product data by country into gdp.csv
-download("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv", destfile="gdp.csv")
+download("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv", destfile="RawData//gdp.csv")
