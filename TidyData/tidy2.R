@@ -4,7 +4,7 @@
 
 
 #read the educ.csv file into educ dataframe
-educ<-read.csv("educ.csv", stringsAsFactors = FALSE, header=TRUE)
+educ<-read.csv("RawData//educ.csv", stringsAsFactors = FALSE, header=TRUE)
 
 #analyze the columns and data types for the columns
 str(educ)

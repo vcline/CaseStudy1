@@ -3,7 +3,7 @@
 # Description:  R code to tidy the data for the gross domestic product 
 
 #read the gdp.csv file into gdp dataframe
-gdp<-read.csv("gdp.csv", stringsAsFactors = FALSE, header=FALSE)
+gdp<-read.csv("RawData//gdp.csv", stringsAsFactors = FALSE, header=FALSE)
 
 #analyze the columns and data types for the columns
 str(gdp)

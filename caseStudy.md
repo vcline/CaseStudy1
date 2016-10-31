@@ -13,7 +13,7 @@ library(knitr)
 ```
 
 ```r
-opts_knit$set(root_dir = ".//Homework//R//caseStudy1//")
+opts_knit$set(root_dir = ".//Homework//R//caseStudy1//CaseStudy1//")
 ```
 
 ##Introduction
@@ -95,8 +95,8 @@ The below makefile code will download the data from URL into a file.  The gross 
 
 ```r
 ##Make File Code
-source("Gather1.R")
-source("Gather2.R")
+source("GatherData//Gather1.R")
+source("GatherData//Gather2.R")
 ```
 
 
@@ -107,7 +107,7 @@ Tidy2.R tidies the data for educational file.  It reads the data from the csv fi
 
 ```r
 #R code to tidy the data for the gross domestic product 
-source("Tidy1.R")
+source("TidyData//tidy1.R")
 ```
 
 ```
@@ -116,7 +116,7 @@ source("Tidy1.R")
 
 ```r
 #R code to tidy the data for educational data
-source("Tidy2.R")
+source("TidyData//tidy2.R")
 ```
 
 
@@ -128,7 +128,7 @@ source("Tidy2.R")
 Analysis.R file is used to conduct analysis on the gross domestic product data in conjunction with the educational data.  The data from the gross domestic product is merged with the educational data by matching on CountryShortCode.  This data is then sorted by GDP in ascending order.  Please note that by doing so, we have effectively also sorted the GDP rankings in ascending order.  We then retrieve the average GDP rankings for the High income:OECD and High income:nonOECD income groups in order to observe the difference between the two in relation to each other.  Finally, the GDP for all the countries is plotted against the Income Group.  This is represented through the histogram below.  Furthermore, the GDP rankings are grouped into 5 separate quantiles, with Quantile1 representing the bottom 37 ranked GDPs and Quantile5 representing the top 38 ranked GDPs.  The reason for this uneven distribution is due to 189 observations.  The quantiles are presented in a tabular form against the Income Groups.
 
 ```r
-source("Analysis.R")
+source("Analysis//Analysis.R")
 ```
 
 ![](caseStudy_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
