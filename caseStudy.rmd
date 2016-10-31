@@ -261,11 +261,13 @@ print(table(quantile=df$quantile, incomegroup=factor(df$incomeGroup)))
  
 # Conclusion
 The precise ratios are as follows:
- High income:  nonOECD makes up 12% of the total GDP population.
- High income:  OECD makes up 16% of the total GDP population.
- Low income makes up 19% of the total GDP population.
- Low middle income makes up 28% of the total GDP population.
- Upper middle income makes up 24% of the total GDP population.
+
+  * High income:  nonOECD makes up 12% of the total GDP population.
+  * High income:  OECD makes up 16% of the total GDP population.
+  * Low income makes up 19% of the total GDP population.
+  * Low middle income makes up 28% of the total GDP population.
+  * Upper middle income makes up 24% of the total GDP population.
+  
 Based on the tabular data of the Income Groups vs. Quantile rankings, as well as the histogram, we can see that, eventhough, the low middle income seems to have the highest percentage of total GDP population, High income:  OECD income group makes up 47% of the top quantile group, consisting of 38 GDP values and it contains no low incomes.  This is represented by Quantile 5, which in this case consists of the top 38 GDPs.  The lowest quantile group, consisting of 37 GDP values, is composed of 43% of Lower middle incomes.   
 
   * Answers
