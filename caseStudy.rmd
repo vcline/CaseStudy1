@@ -18,14 +18,14 @@ opts_knit$set(root_dir = ".//Homework//R//caseStudy1//CaseStudy1//")
 The goal of the following project is to conduct an analysis of the the Gross Domestic Product data of 190 ranked countries and compare it the the educational data, specifically the income groups, for the countries.
 
 ##Data Source
-The data for the Gross Domestic Product and education is downloaded from the world bank website:  http://www.worldbank.org/.  The website contains comprehensive information regarding indicators about development in coountries around the globe.
+The data for the Gross Domestic Product and education is downloaded from the world bank website:  http://www.worldbank.org/.  The website contains comprehensive information regarding indicators about development in countries around the globe.
 
 ##Code Files
 The code is written in R and is modularized by data gathering, data tidying, and data analysis.  Below are the list of files and the purpose of each file, as well as a comprehensive explanation of key variables/data frames involved.
 
-1.  init.R - installs a list of packages/libraries needed for   the project.
-2.  Gather1.R - downlaods the data for gross domestic product   from the world bank website and loads it into a csv file named "gdp.csv".   
-3.  Gather2.R - downlaods the educational data from the world   bank website and loads it into a csv file named "educ.csv".
+1.  init.R - installs a list of packages/libraries needed for the project.
+2.  Gather1.R - downlaods the data for gross domestic product from the world bank website and loads it into a csv file named "gdp.csv".   
+3.  Gather2.R - downlaods the educational data from the world bank website and loads it into a csv file named "educ.csv".
 4.  Tidy1.R - loads the gross domestic product data into the gppdata dataframe, preserves the raw version of data in another dataframe, and cleans the gross domestic product data by correcting the datatypes, assigning meaningful column names, removing null data and preparing it for analysis.
   * DataSets
     * gdp - Contains the original downloaded data from gdp.csv 
@@ -45,7 +45,7 @@ The code is written in R and is modularized by data gathering, data tidying, and
     * educ  - Contains the original downloaded data from educ.csv.  This is the data that is cleaned and used for analysis.
     * educraw - Backup of the original raw data from educ.csv
   *Key Columns
-    * CountryShortCode - Abbreviated used to describe the full country name.  Original name was CountryCode, but this was changed for ease of analysis, as this is the key column.
+    * CountryShortCode - Abbreviations used to describe the full country name.  Original name was CountryCode, but this was changed for ease of analysis, as this is the key column.
     * IncomeGroup - Contains the overall income group category for a given country.  The values include:  High Income: nonOECD, High Income: OECD, Low Income, Lower middle income, Upper middle income.
 6.  Analysis.R - Merges the gross domestic product data with the educational data, sorts the merged data, computes the average GDP rankings for High income: OECD and High income: nonOECD groups and plots the GDP for all countries against the Income Groups.  It also sections the GDP ranking into 5 separate quantile groups and presents a count of rankings by Income Groups. 
   * Datasets
@@ -57,7 +57,7 @@ The code is written in R and is modularized by data gathering, data tidying, and
 
 ##Code
 
-Below is the code for downloading the data for the Gross Domestic Product to the gdp.csv file and the Education data to the educ.csv file.  This is following by data cleaning for both the files and then the analysis.  For detailed code within the corresponding makefiles, please refer to the appendix.
+Below is the code for downloading the data for the Gross Domestic Product to the gdp.csv file and the Education data to the educ.csv file.  This is followed by data cleaning for both the files and then the analysis.  For detailed code within the corresponding makefiles, please refer to the appendix.
 
 
 #Load the necessary packages
